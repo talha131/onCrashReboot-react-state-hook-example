@@ -3,10 +3,10 @@ import "./App.css";
 
 const App = () => {
   const [userIdValue, setUserIdValue] = React.useState("1");
-  const [result, setResult] = React.useState("");
-  const [errorMessage, setErrorMessage] = React.useState("");
   const [isFetching, setIsFetching] = React.useState(false);
+  const [result, setResult] = React.useState("");
   const [isSuccessful, setIsSuccessful] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   const fetchUserInfo = () => {
     fetch(`https://reqres.in/api/users/${userIdValue}?delay=5`)
@@ -27,6 +27,7 @@ const App = () => {
         setIsFetching(false);
       });
   };
+
   const onValueChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserIdValue(event.target.value);
   };
@@ -43,6 +44,7 @@ const App = () => {
 
   return (
     <div className="App">
+
       <form noValidate autoComplete="off">
         <label>
           Enter User ID (1-12)
@@ -62,6 +64,7 @@ const App = () => {
           onClick={onFetchClicked}
           disabled={isFetching}
         />
+
         {isFetching && (
             <label className="status">Fetching data. Please wait (max wait: 5 seconds)...</label>
         )}
@@ -69,6 +72,7 @@ const App = () => {
           <label className="error">{errorMessage}</label>
         )}
       </form>
+
       {isSuccessful && (
         <div className="result">
           <h2>Result</h2>
@@ -78,6 +82,7 @@ const App = () => {
           </pre>
         </div>
       )}
+
     </div>
   );
 };
