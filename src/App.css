@@ -73,6 +73,7 @@ label.error {
 
 div.result {
   background: dimgray;
+  color: white;
   padding: 10px;
   margin-top: 10px;
 }
